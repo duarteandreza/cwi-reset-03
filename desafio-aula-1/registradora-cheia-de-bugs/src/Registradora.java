@@ -23,7 +23,7 @@ public class Registradora {
                 if (!DataProjeto.cozinhaEmFuncionamento()) {
                     System.out.println("Cozinha fechada!");
                     System.out.println("Desculpa!  O item (" + item + ") solicitado está indísponível. A quantidade restante em estoque é de "+ ItensPorQuantidade.getQuantidadeEstoque(item) + ".");
-          
+
                     precoItem = 0;
                 } else {
                     ReposicaoCozinha.reporItem(item);
