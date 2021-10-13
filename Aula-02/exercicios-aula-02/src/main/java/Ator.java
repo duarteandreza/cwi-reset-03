@@ -1,13 +1,12 @@
-public class Ator {
-    private String nome;
-    private int idade;
+public class Ator extends Pessoa{
+
     private int qtdOscars;
-    private Genero genero;
+
 
     public Ator(String nome, int idade, int qtdOscars, Genero genero) {
-        this.nome = nome;
-        this.idade = idade;
+        super(nome, idade, genero);
         this.qtdOscars = qtdOscars;
-        this.genero = genero;
+
     }
+
 }

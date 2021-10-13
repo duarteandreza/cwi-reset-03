@@ -1,5 +1,15 @@
 public enum Genero {
-    MASCULINO,
-    FEMININO,
-    NAO_BINARIO;
+    MASCULINO("Masculino"),
+    FEMININO("Feminino"),
+    NAO_BINARIO("Não binário");
+
+    private String descricao;
+
+    Genero(String descricao){
+        this.descricao = descricao;
+    }
+
+    public String getDescricao() {
+        return descricao;
+    }
 }
