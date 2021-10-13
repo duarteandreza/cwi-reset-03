@@ -4,7 +4,7 @@ import java.time.LocalDate;
 
 public class Ator {
 
-    private Integer id;
+    private static Integer id;
     private String nome;
     private LocalDate dataNascimento;
     private StatusCarreira statusCarreira;
@@ -16,5 +16,25 @@ public class Ator {
         this.dataNascimento = dataNascimento;
         this.statusCarreira = statusCarreira;
         this.anoInicioAtividade = anoInicioAtividade;
+    }
+
+    public static Integer getId() {
+        return id;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public LocalDate getDataNascimento() {
+        return dataNascimento;
+    }
+
+    public StatusCarreira getStatusCarreira() {
+        return statusCarreira;
+    }
+
+    public Integer getAnoInicioAtividade() {
+        return anoInicioAtividade;
     }
 }
