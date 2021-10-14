@@ -21,7 +21,7 @@ public class AtorService {
         if (atorRequest.getAnoInicioAtividade() == null)
             throw new CampoObrigatorioException("ano de início de atividade");
 
-        if (!atorRequest.getNome().contains(" ")) throw new NomeSobrenomeException();
+        if (atorRequest.getNome().length() < 2) throw new NomeSobrenomeException();
 
         if (LocalDate.now().compareTo(atorRequest.getDataNascimento()) < 0) throw new DataNascimentoInvalidaException();
 

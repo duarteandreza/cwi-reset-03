@@ -2,14 +2,16 @@ package br.com.cwi.reset.andrezaduarte;
 
 import java.time.LocalDate;
 
-public class Diretor {
-    private static Integer id;
+public class DiretorRequest {
+
     private String nome;
     private LocalDate dataNascimento;
     private Integer anoInicioAtividade;
 
-    public static Integer getId() {
-        return id;
+    public DiretorRequest(String nome, LocalDate dataNascimento, Integer anoInicioAtividade) {
+        this.nome = nome;
+        this.dataNascimento = dataNascimento;
+        this.anoInicioAtividade = anoInicioAtividade;
     }
 
     public String getNome() {
