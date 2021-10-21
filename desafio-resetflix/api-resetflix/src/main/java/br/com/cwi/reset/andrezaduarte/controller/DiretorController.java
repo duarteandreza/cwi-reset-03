@@ -30,13 +30,13 @@ public class DiretorController {
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
     public List<Diretor> listarDiretores(@RequestParam String filtroNome) throws Exception {
-        this.diretorService.listarDiretores(filtroNome);
+       return this.diretorService.listarDiretores(filtroNome);
     }
 
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
     public Diretor consultarDiretor(@PathVariable Integer id) throws Exception {
-        this.diretorService.consultarDiretor(id);
+       return this.diretorService.consultarDiretor(id);
     }
 
 }
