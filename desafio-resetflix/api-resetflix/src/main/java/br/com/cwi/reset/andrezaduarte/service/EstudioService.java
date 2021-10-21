@@ -1,19 +1,37 @@
 package br.com.cwi.reset.andrezaduarte.service;
 
 import br.com.cwi.reset.andrezaduarte.FakeDatabase;
+import br.com.cwi.reset.andrezaduarte.exception.NomeNaoInformadoException;
+import br.com.cwi.reset.andrezaduarte.exception.TipoDominioException;
 import br.com.cwi.reset.andrezaduarte.model.Estudio;
 import br.com.cwi.reset.andrezaduarte.request.EstudioRequest;
+import br.com.cwi.reset.andrezaduarte.validator.BasicInfoRequiredValidator;
+
+import java.util.List;
 
 public class EstudioService {
-    public EstudioService(FakeDatabase instance) {
+
+    private FakeDatabase fakeDatabase;
+    private Integer id;
+
+    public EstudioService(FakeDatabase fakeDatabase) {
+
+        this.fakeDatabase = fakeDatabase;
+        this.id = 0;
+
     }
 
-    public void cadastrarEstudio(EstudioRequest estudioRequest) {
+    public void criarEstudio(EstudioRequest estudioRequest) throws Exception {
+        new BasicInfoRequiredValidator().accept(estudioRequest.getNome(),estudioRequest.getDescricao(), estudioRequest.getDataCriacao(), estudioRequest.getStatusAtividade(), TipoDominioException.ESTUDIO);
+
+        final Integer igGerado = estudiosCadastrados.size() + 1;
+
+        Estudio estudio = new Estudio(this.id, estudioRequest.getNome(), estudioRequest.getDescricao(), estudioRequest.getDataCriacao(), estudioRequest.getStatusAtividade());
+
+        fakeDatabase.persisteEstudio(estudio);
     }
 
-    public List<Estudio> listarEstudios(String filtroNome) {
-    }
+        final List<Estudio> estudiosCadastrados
 
-    public Estudio consultarEstudios(Integer id) {
-    }
+
 }

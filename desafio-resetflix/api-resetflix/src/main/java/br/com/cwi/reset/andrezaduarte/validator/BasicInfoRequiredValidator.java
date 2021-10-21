@@ -1,6 +1,7 @@
 package br.com.cwi.reset.andrezaduarte.validator;
 
 import br.com.cwi.reset.andrezaduarte.exception.*;
+import br.com.cwi.reset.andrezaduarte.model.StatusAtividade;
 
 import java.time.LocalDate;
 
@@ -30,5 +31,8 @@ public class BasicInfoRequiredValidator {
         if (anoInicioAtividade <= dataNascimento.getYear()) {
             throw new AnoInicioAtividadeInvalidoException(tipoDominioException.getSingular());
         }
+    }
+
+    public void accept(final String nome, String descricao, LocalDate dataCriacao, StatusAtividade statusAtividade, final TipoDominioException tipoDominioException) throws Exception {
     }
 }
