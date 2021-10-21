@@ -35,7 +35,7 @@ public class AtorController {
     @GetMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
     public Ator consultarAtor(@PathVariable Integer id) throws Exception {
-        return this.consultarAtor(Integer id);
+        return this.consultarAtor(id);
     }
 
     @GetMapping
