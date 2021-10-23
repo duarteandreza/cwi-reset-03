@@ -23,7 +23,7 @@ public class EstudioController {
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public void criarEstudio(@RequestBody EstudioRequest estudioRequest) throws Exception {
-        this.estudioService.cadastrarEstudio(estudioRequest);
+        this.estudioService.criarEstudio(estudioRequest);
     }
 
     @GetMapping
@@ -35,7 +35,7 @@ public class EstudioController {
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
     public Estudio consultarEstudio (@PathVariable Integer id) throws Exception {
-        return this.estudioService.consultarEstudios(id);
+        return this.estudioService.consultarEstudio(id);
     }
 
 }
