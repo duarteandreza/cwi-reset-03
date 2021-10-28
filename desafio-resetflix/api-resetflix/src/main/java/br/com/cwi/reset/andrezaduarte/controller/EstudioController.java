@@ -5,6 +5,7 @@ import br.com.cwi.reset.andrezaduarte.FakeDatabase;
 import br.com.cwi.reset.andrezaduarte.model.Estudio;
 import br.com.cwi.reset.andrezaduarte.request.EstudioRequest;
 import br.com.cwi.reset.andrezaduarte.service.EstudioService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
@@ -14,11 +15,8 @@ import java.util.List;
 @RequestMapping("/estudios")
 public class EstudioController {
 
+    @Autowired
     private EstudioService estudioService;
-
-    public EstudioController(){
-        this.estudioService = new EstudioService(FakeDatabase.getInstance());
-    }
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)

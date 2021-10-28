@@ -4,6 +4,8 @@ import br.com.cwi.reset.andrezaduarte.FakeDatabase;
 import br.com.cwi.reset.andrezaduarte.exception.CanseiDeCriarExceptionCustomizadaException;
 import br.com.cwi.reset.andrezaduarte.model.Ator;
 import br.com.cwi.reset.andrezaduarte.model.PersonagemAtor;
+import br.com.cwi.reset.andrezaduarte.repositories.AtorRepository;
+import br.com.cwi.reset.andrezaduarte.repositories.FilmeRepository;
 import br.com.cwi.reset.andrezaduarte.repositories.PersonagemAtorRepository;
 import br.com.cwi.reset.andrezaduarte.request.PersonagemRequest;
 import br.com.cwi.reset.andrezaduarte.validator.PersonagemRequestCamposObrigatoriosValidator;
@@ -20,17 +22,18 @@ public class PersonagemAtorService {
 
     @Autowired
     private PersonagemAtorRepository personagemAtorRepository;
-
     @Autowired
-    private AtorService atorService;
+    private AtorRepository atorRepository;
+    @Autowired
+    private FilmeRepository filmeRepository;
 
-    public PersonagemAtor cadastrarPersonagemAtor(PersonagemRequest personagemRequest) throws Exception {
-        final Ator ator = atorService.consultarAtor(personagemRequest.getIdAtor());
-        PersonagemAtor personagemAtor = new PersonagemAtor(personagemRequest.getIdAtor(), personagemRequest.getNomePersonagem(),personagemRequest.getDescricaoPersonagem(),personagemRequest.getTipoAtuacao());
-        PersonagemAtorRepository.save(personagemAtor);
-
-        return personagemAtor;
-    }
+//    public PersonagemAtor cadastrarPersonagemAtor(PersonagemRequest personagemRequest) throws Exception {
+//        final Ator ator = atorService.consultarAtor(personagemRequest.getIdAtor());
+//        PersonagemAtor personagemAtor = new PersonagemAtor(personagemRequest.getIdAtor(), personagemRequest.getNomePersonagem(),personagemRequest.getDescricaoPersonagem(),personagemRequest.getTipoAtuacao());
+//        PersonagemAtorRepository.(save.personagemAtor);
+//
+//        personagemAtorRepository.findAll();
+//    }
 
     public List<PersonagemAtor> consultarPersonagemAtor(String nome) throws Exception {
         personagemAtorRepository.FindAll();
@@ -46,7 +49,7 @@ public class PersonagemAtorService {
         for (PersonagemRequest personagemRequest : personagens) {
             new PersonagemRequestCamposObrigatoriosValidator().accept(personagemRequest);
 
-            /**
+            /*
              * A linha: "if (personagemRequestSet.contains(personagemRequest))"
              *
              * Cai na implementação do Set abaixo
@@ -66,15 +69,15 @@ public class PersonagemAtorService {
         }
     }
 
-    public List<PersonagemAtor> cadastrarPersonagensFilme(final List<PersonagemRequest> personagens) throws Exception {
-        validarPersonagensAtoresFilme(personagens);
-
-        final List<PersonagemAtor> personagensAtores = new ArrayList<>();
-
-        for (PersonagemRequest request : personagens) {
-            personagensAtores.add(cadastrarPersonagemAtor(request));
-        }
-
-        return personagensAtores;
-    }
+//    public List<PersonagemAtor> cadastrarPersonagensFilme(final List<PersonagemRequest> personagens) throws Exception {
+//        validarPersonagensAtoresFilme(personagens);
+//
+//        final List<PersonagemAtor> personagensAtores = new ArrayList<>();
+//
+//        for (PersonagemRequest request : personagens) {
+//            personagensAtores.add(cadastrarPersonagemAtor(request));
+//        }
+//
+//        return personagensAtores;
+//    }
 }

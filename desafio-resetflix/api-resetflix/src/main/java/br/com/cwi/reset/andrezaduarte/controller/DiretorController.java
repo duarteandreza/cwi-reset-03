@@ -5,7 +5,9 @@ import br.com.cwi.reset.andrezaduarte.FakeDatabase;
 import br.com.cwi.reset.andrezaduarte.model.Diretor;
 import br.com.cwi.reset.andrezaduarte.request.AtorRequest;
 import br.com.cwi.reset.andrezaduarte.request.DiretorRequest;
+import br.com.cwi.reset.andrezaduarte.service.AtorService;
 import br.com.cwi.reset.andrezaduarte.service.DiretorService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
@@ -15,12 +17,8 @@ import java.util.List;
 @RequestMapping("/diretores")
 public class DiretorController {
 
+    @Autowired
     private DiretorService diretorService;
-
-    public DiretorController() {
-        this.diretorService = new DiretorService(FakeDatabase.getInstance());
-
-    }
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
@@ -40,17 +38,17 @@ public class DiretorController {
        return this.diretorService.consultarDiretor(id);
     }
 
-    @PutMapping("/{id}")
-    @ResponseStatus(HttpStatus.OK)
-    public void atualizarAtor (@PathVariable Integer id, @RequestBody AtorRequest) throws Exception {
-        diretorService.atualizarDiretor(id);
-    }
-
-    @DeleteMapping("/{id}")
-    @ResponseStatus(HttpStatus.OK)
-    public void removerAtor (@PathVariable Integer id) throws Exception {
-        diretorService.removerDiretor(id);
-    }
+//    @PutMapping("/{id}")
+//    @ResponseStatus(HttpStatus.OK)
+//    public void atualizarAtor (@PathVariable Integer id, @RequestBody AtorRequest) throws Exception {
+//        diretorService.atualizarDiretor(id);
+//    }
+//
+//    @DeleteMapping("/{id}")
+//    @ResponseStatus(HttpStatus.OK)
+//    public void removerAtor (@PathVariable Integer id) throws Exception {
+//        diretorService.removerDiretor(id);
+//    }
 
 
 }

@@ -1,17 +1,27 @@
 package br.com.cwi.reset.andrezaduarte.request;
 
 import br.com.cwi.reset.andrezaduarte.model.Genero;
+
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.util.List;
 
 public class FilmeRequest {
+    @NotNull (message = "Campo obrigatório não informado. Favor informar o campo Nome.")
     private String nome;
+    @NotNull (message = "Campo obrigatório não informado. Favor informar o campo Ano de Lançamento.")
     private Integer anoLancamento;
+    @NotNull (message = "Campo obrigatório não informado. Favor informar o campo Capa do Filme.")
     private String capaFilme;
+    @NotNull (message = "Campo obrigatório não informado. Favor informar o campo Gênero.")
     private List<Genero> generos;
+    @NotNull (message = "Campo obrigatório não informado. Favor informar o campo Id do Diretor.")
     private Integer idDiretor;
+    @NotNull (message = "Campo obrigatório não informado. Favor informar o campo Id do Estúdio.")
     private Integer idEstudio;
+    @NotNull (message = "Campo obrigatório não informado. Favor informar o campo Resumo.")
     private String resumo;
+    @NotNull (message = "Campo obrigatório não informado. Favor informar o campo Personagens.")
     private List<PersonagemRequest> personagens;
 
     public FilmeRequest(String nome, Integer anoLancamento, String capaFilme, List<Genero> generos, Integer idDiretor, Integer idEstudio, String resumo, List<PersonagemRequest> personagens) {

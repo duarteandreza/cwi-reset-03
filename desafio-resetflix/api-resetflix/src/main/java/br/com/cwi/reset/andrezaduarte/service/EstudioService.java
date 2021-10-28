@@ -22,7 +22,7 @@ public class EstudioService {
     public void criarEstudio(EstudioRequest estudioRequest) throws Exception {
         new BasicInfoRequiredValidator().accept(estudioRequest.getNome(),estudioRequest.getDescricao(), estudioRequest.getDataCriacao(), estudioRequest.getStatusAtividade(), TipoDominioException.ESTUDIO);
 
-        List<Estudio> estudiosCadastrados = fakeDatabase.recuperaEstudios();
+        List<Estudio> estudiosCadastrados = estudioRepository.findAll();
 
         for (Estudio estudioCadastrado : estudiosCadastrados) {
             if (estudioCadastrado.getNome().equalsIgnoreCase(estudioRequest.getNome())) {
@@ -32,13 +32,13 @@ public class EstudioService {
 
         Integer idGerado = estudiosCadastrados.size() + 1;
         Estudio estudio = new Estudio(idGerado, estudioRequest.getNome(), estudioRequest.getDescricao(), estudioRequest.getDataCriacao(), estudioRequest.getStatusAtividade());
-        fakeDatabase.persisteEstudio(estudio);
+        estudioRepository.findAll();
     }
 
     public List<Estudio> listartarEstudios() throws Exception {
 
 
-        final List<Estudio> estudios = fakeDatabase.recuperaEstudios();
+        final List<Estudio> estudios = estudioRepository.findAll();
 
         if (estudios.isEmpty()) {
             throw new ListaVaziaException(TipoDominioException.ESTUDIO.getSingular(), TipoDominioException.ESTUDIO.getPlural());
@@ -48,7 +48,7 @@ public class EstudioService {
     }
 
     public List<Estudio> listarEstudios(final String filtroNome) throws Exception {
-        final List<Estudio> estudiosCadastrados = fakeDatabase.recuperaEstudios();
+        final List<Estudio> estudiosCadastrados = estudioRepository.findAll();
 
         if (estudiosCadastrados.isEmpty()) {
             throw new ListaVaziaException(TipoDominioException.ESTUDIO.getSingular(), TipoDominioException.ESTUDIO.getPlural());
@@ -79,7 +79,7 @@ public class EstudioService {
             throw new IdNaoInformado();
         }
 
-        final List<Estudio> estudios = fakeDatabase.recuperaEstudios();
+        final List<Estudio> estudios = estudioRepository.findAll();
 
         for (Estudio estudio : estudios) {
             if (estudio.getId().equals(id)) {

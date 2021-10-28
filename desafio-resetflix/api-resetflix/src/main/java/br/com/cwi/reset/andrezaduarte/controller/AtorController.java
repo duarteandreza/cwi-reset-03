@@ -43,16 +43,16 @@ public class AtorController {
         return this.atorService.consultarAtores();
     }
 
-    @PutMapping("/{id}")
-    @ResponseStatus(HttpStatus.OK)
-    public void atualizarAtor (@PathVariable Integer id, @RequestBody AtorRequest) throws Exception {
-        atorService.atualizarAtor(id);
-    }
-
-    @DeleteMapping("/{id}")
-    @ResponseStatus(HttpStatus.OK)
-    public void removerAtor (@PathVariable Integer id) throws Exception {
-        atorService.removerAtor(id);
-    }
+//    @PutMapping("/{id}")
+//    @ResponseStatus(HttpStatus.OK)
+//    public void atualizarAtor (@PathVariable Integer id, @RequestBody AtorRequest) throws Exception {
+//        atorService.atualizarAtor(id);
+//    }
+//
+//    @DeleteMapping("/{id}")
+//    @ResponseStatus(HttpStatus.OK)
+//    public void removerAtor (@PathVariable Integer id) throws Exception {
+//        atorService.removerAtor(id);
+//    }
 
 }

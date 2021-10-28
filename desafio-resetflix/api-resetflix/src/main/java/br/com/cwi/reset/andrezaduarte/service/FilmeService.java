@@ -34,7 +34,7 @@ public class FilmeService {
     }
 
     public void criarFilme(FilmeRequest filmeRequest) throws Exception {
-        final List<Filme> filmesCadastrados = fakeDatabase.recuperaFilmes();
+        final List<Filme> filmesCadastrados = filmeRepository.findAll();
 
         final Integer idGerado = filmesCadastrados.size() + 1;
 
@@ -64,7 +64,7 @@ public class FilmeService {
             }
         }
 
-        fakeDatabase.persisteFilme(filme);
+        filmeRepository.findAll();
     }
 
     public List<Filme> consultarFilmes(
@@ -72,7 +72,7 @@ public class FilmeService {
             String nomeDiretor,
             String nomePersonagem,
             String nomeAtor) throws Exception {
-        final List<Filme> filmesCadastrados = fakeDatabase.recuperaFilmes();
+        final List<Filme> filmesCadastrados = filmeRepository.findAll();
 
         if (filmesCadastrados.isEmpty()) {
             throw new ListaVaziaException(TipoDominioException.FILME.getSingular(), TipoDominioException.FILME.getPlural());
