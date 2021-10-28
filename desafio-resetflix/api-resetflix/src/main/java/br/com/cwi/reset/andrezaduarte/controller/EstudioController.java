@@ -32,7 +32,7 @@ public class EstudioController {
         return this.estudioService.listarEstudios(filtroNome);
     }
 
-    @GetMapping
+    @GetMapping(path = "/{id}")
     @ResponseStatus(HttpStatus.OK)
     public Estudio consultarEstudio (@PathVariable Integer id) throws Exception {
         return this.estudioService.consultarEstudio(id);

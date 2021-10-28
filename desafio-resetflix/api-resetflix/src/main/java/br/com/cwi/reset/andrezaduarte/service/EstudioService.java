@@ -3,22 +3,21 @@ package br.com.cwi.reset.andrezaduarte.service;
 import br.com.cwi.reset.andrezaduarte.FakeDatabase;
 import br.com.cwi.reset.andrezaduarte.exception.*;
 import br.com.cwi.reset.andrezaduarte.model.Estudio;
+import br.com.cwi.reset.andrezaduarte.repositories.EstudioRepository;
 import br.com.cwi.reset.andrezaduarte.request.EstudioRequest;
 import br.com.cwi.reset.andrezaduarte.validator.BasicInfoRequiredValidator;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
+@Service
 public class EstudioService {
 
-    private FakeDatabase fakeDatabase;
-
-    public EstudioService(FakeDatabase fakeDatabase) {
-
-        this.fakeDatabase = fakeDatabase;
-
-    }
+    @Autowired
+    EstudioRepository estudioRepository;
 
     public void criarEstudio(EstudioRequest estudioRequest) throws Exception {
         new BasicInfoRequiredValidator().accept(estudioRequest.getNome(),estudioRequest.getDescricao(), estudioRequest.getDataCriacao(), estudioRequest.getStatusAtividade(), TipoDominioException.ESTUDIO);
